@@ -8,34 +8,41 @@ namespace Calculator
             result.Text = "";
         }
 
+        private void checkInput()
+        {
+
+        }
+
+        private void inputNumber(string num)
+        {
+            string[] inputs = result.Text.Split(' ');
+            if (inputs[0].Length != 6) { result.Text += num; }
+        }
+
         private void btn1_Click(object sender, EventArgs e)
         {
-            result.Text += "1";
+            inputNumber("1");
         }
 
         private void btn2_Click(object sender, EventArgs e)
         {
-            result.Text += "2";
+            inputNumber("2");
         }
 
-        private void btn3_Click(object sender, EventArgs e)
-        {
-            result.Text += "3";
-        }
 
         private void btn4_Click(object sender, EventArgs e)
         {
-            result.Text += "4";
+            inputNumber("4");
         }
 
         private void btn5_Click(object sender, EventArgs e)
         {
-            result.Text += "5";
+            inputNumber("5");
         }
 
         private void btn6_Click(object sender, EventArgs e)
         {
-            result.Text += "6";
+            inputNumber("6");
         }
 
         private void btn7_Click(object sender, EventArgs e)
@@ -58,5 +65,34 @@ namespace Calculator
             result.Text += "0";
         }
 
+        private void btn3_Click(object sender, EventArgs e)
+        {
+            result.Text += "3";
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            result.Text += " + ";
+        }
+
+        private void btnSub_Click(object sender, EventArgs e)
+        {
+            result.Text += " - ";
+        }
+
+        private void btnDiv_Click(object sender, EventArgs e)
+        {
+            result.Text += " / ";
+        }
+        private void btnMul_Click(object sender, EventArgs e)
+        {
+            result.Text += " * ";
+        }
+        private void btnEquals_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }
