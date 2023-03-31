@@ -256,6 +256,7 @@
             this.btnDel.TabIndex = 7;
             this.btnDel.Text = "<-";
             this.btnDel.UseVisualStyleBackColor = false;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
             // btnDiv
             // 
@@ -283,6 +284,7 @@
             this.btnClear.TabIndex = 5;
             this.btnClear.Text = "C";
             this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btn1
             // 
@@ -359,6 +361,7 @@
             this.Controls.Add(this.borderPanel);
             this.Name = "Form1";
             this.Text = "Best Calculator in the World!";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.borderPanel.ResumeLayout(false);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
