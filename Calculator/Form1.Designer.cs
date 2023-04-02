@@ -361,7 +361,7 @@
             this.Controls.Add(this.borderPanel);
             this.Name = "Form1";
             this.Text = "Best Calculator in the World!";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown_1);
             this.borderPanel.ResumeLayout(false);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();

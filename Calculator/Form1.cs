@@ -24,7 +24,18 @@ namespace Calculator
         private void inputNumber(string num)
         {
             string[] inputs = result.Text.Split(' ');
-            if (inputs[0].Length != 6) { result.Text += num; }
+            switch (inputs.Length)
+            {
+                case 1:
+                    if (inputs[0].Length != 6) { result.Text += num; }
+                    break;
+                case 2:
+                    result.Text += num;
+                    break;
+                case 3:
+                    if (inputs[2].Length != 6) { result.Text += num; }
+                    break;
+            }
         }
 
         #region Number Buttons
@@ -119,11 +130,32 @@ namespace Calculator
             result.Text = "";
         }
 
-        // Why this dont work
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        private void changeButtonColor(string color)
         {
-            if (e.KeyCode == Keys.Enter)
-                MessageBox.Show("You pressed the Enter Key.");
+            Color update = (Color)new ColorConverter().ConvertFromString(color);
+            foreach (Control control in mainPanel.Controls)
+            {
+                if (control is Button)
+                {
+                    Button button = (Button)control;
+                    button.ForeColor = update;
+                }
+            }
+        }
+
+        private void Form1_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.D)
+            {
+                mainPanel.BackgroundImage = Properties.Resources.dark_dragon;
+                changeButtonColor("white");
+            }
+            else if (e.KeyCode == Keys.L)
+            {
+                mainPanel.BackgroundImage = Properties.Resources.light_dragon;
+                changeButtonColor("black");
+
+            }
         }
     }
 }
