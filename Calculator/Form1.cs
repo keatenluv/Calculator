@@ -14,15 +14,23 @@ namespace Calculator
             
         }
 
-        private void inputOperator(string op)
+        private void inputOperator(object sender, EventArgs e)
         {
+            // Cast sender to button to extract the operator
+            Button button = sender as Button;
+            string op = button?.Text;
+            
             string[] inputs = result.Text.Split(' ');
-            if (inputs.Length < 2) { result.Text += $" {op} "; }
+            if (inputs[0].Length == 0) {; }
+            else if (inputs.Length < 2) { result.Text += $" {op} "; }
             else {result.Text = result.Text.Replace($" {inputs[1]} ", $" {op} ");  }
         }
 
-        private void inputNumber(string num)
+        private void inputNumber(object sender, EventArgs e)
         {
+            Button button = sender as Button;
+            string num = button?.Text;
+
             string[] inputs = result.Text.Split(' ');
             switch (inputs.Length)
             {
@@ -38,79 +46,6 @@ namespace Calculator
             }
         }
 
-        #region Number Buttons
-        private void btn1_Click(object sender, EventArgs e)
-        {
-            inputNumber("1");
-        }
-
-        private void btn2_Click(object sender, EventArgs e)
-        {
-            inputNumber("2");
-        }
-
-        private void btn3_Click(object sender, EventArgs e)
-        {
-            inputNumber("3");
-        }
-
-        private void btn4_Click(object sender, EventArgs e)
-        {
-            inputNumber("4");
-        }
-
-        private void btn5_Click(object sender, EventArgs e)
-        {
-            inputNumber("5");
-        }
-
-        private void btn6_Click(object sender, EventArgs e)
-        {
-            inputNumber("6");
-        }
-
-        private void btn7_Click(object sender, EventArgs e)
-        {
-            inputNumber("7");
-        }
-
-        private void btn8_Click(object sender, EventArgs e)
-        {
-            inputNumber("8");
-        }
-
-        private void btn9_Click(object sender, EventArgs e)
-        {
-            inputNumber("9");
-        }
-
-        private void btn0_Click(object sender, EventArgs e)
-        {
-            inputNumber("0");
-        }
-        #endregion
-
-        #region Operator Buttons
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            inputOperator("+");
-        }
-
-        private void btnSub_Click(object sender, EventArgs e)
-        {
-            inputOperator("-");
-        }
-
-        private void btnDiv_Click(object sender, EventArgs e)
-        {
-            inputOperator("/");
-        }
-        private void btnMul_Click(object sender, EventArgs e)
-        {
-            inputOperator("*");
-        }
-        #endregion
-       
         private void btnEquals_Click(object sender, EventArgs e)
         {
 
@@ -157,5 +92,7 @@ namespace Calculator
 
             }
         }
+
+       
     }
 }
