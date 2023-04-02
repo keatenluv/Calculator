@@ -2,6 +2,9 @@ namespace Calculator
 {
     public partial class Form1 : Form
     {
+
+        bool calculated = false;
+
         public Form1()
         {
             InitializeComponent();
@@ -48,6 +51,36 @@ namespace Calculator
 
         private void btnEquals_Click(object sender, EventArgs e)
         {
+            string[] inputs = result.Text.Split(' ');
+            if (inputs.Length == 3 && !inputs[2].Equals(""))
+            {
+                int leftOperand = int.Parse(inputs[0]);
+                int rightOperand = int.Parse(inputs[2]);
+                string op = inputs[1];
+                calculated = true;
+                switch (op)
+                {
+                    case "/":
+                        result.Text = (leftOperand / rightOperand).ToString();
+                        break;
+                    case "*":
+                        result.Text = (leftOperand * rightOperand).ToString();
+                        break;
+                    case "-":
+                        result.Text = (leftOperand - rightOperand).ToString();
+                        break;
+                    case "+":
+                        result.Text = (leftOperand + rightOperand).ToString();
+                        break;
+                    case "%":
+                        result.Text = (leftOperand % rightOperand).ToString();
+                        break;
+                }
+            } else
+            {
+                MessageBox.Show("Incomplete Expression");
+            }
+
 
         }
 
@@ -55,6 +88,10 @@ namespace Calculator
         {
             string[] inputs = result.Text.Split(' ');
             if (result.Text.Length > 0 && inputs.Length < 2)
+            {
+                result.Text = result.Text.Remove(result.Text.Length - 1);
+            }
+            else if (inputs.Length > 2 && inputs[2].Length > 0)
             {
                 result.Text = result.Text.Remove(result.Text.Length - 1);
             }
