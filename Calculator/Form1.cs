@@ -10,42 +10,51 @@ namespace Calculator
             InitializeComponent();
             result.Text = "";
             this.KeyPreview = true;
+            result.ForeColor = Color.Black;
         }
 
-        private void checkInput()
-        {
-            
-        }
-
+        // When user clicks a operator
         private void inputOperator(object sender, EventArgs e)
         {
             // Cast sender to button to extract the operator
-            Button button = sender as Button;
-            string op = button?.Text;
-            
-            string[] inputs = result.Text.Split(' ');
-            if (inputs[0].Length == 0) {; }
-            else if (inputs.Length < 2) { result.Text += $" {op} "; }
-            else {result.Text = result.Text.Replace($" {inputs[1]} ", $" {op} ");  }
+            if (!calculated)
+            {
+                Button button = sender as Button;
+                string op = button?.Text;
+
+                string[] inputs = result.Text.Split(' ');
+                if (inputs[0].Length == 0) {; }
+                else if (inputs.Length < 2) { result.Text += $" {op} "; }
+                else { result.Text = result.Text.Replace($" {inputs[1]} ", $" {op} "); }
+            }
         }
 
+        // When user clicks a number
         private void inputNumber(object sender, EventArgs e)
         {
             Button button = sender as Button;
             string num = button?.Text;
+            
 
-            string[] inputs = result.Text.Split(' ');
-            switch (inputs.Length)
+            if (!calculated)
             {
-                case 1:
-                    if (inputs[0].Length != 6) { result.Text += num; }
-                    break;
-                case 2:
-                    result.Text += num;
-                    break;
-                case 3:
-                    if (inputs[2].Length != 6) { result.Text += num; }
-                    break;
+                string[] inputs = result.Text.Split(' ');
+                switch (inputs.Length)
+                {
+                    case 1:
+                        if (inputs[0].Length != 6) { result.Text += num; }
+                        break;
+                    case 2:
+                        result.Text += num;
+                        break;
+                    case 3:
+                        if (inputs[2].Length != 6) { result.Text += num; }
+                        break;
+                }
+            } else
+            {
+                result.Text = num;
+                calculated = false;
             }
         }
 
@@ -115,8 +124,10 @@ namespace Calculator
             }
         }
 
+        // Handles keyboard inputs
         private void Form1_KeyDown_1(object sender, KeyEventArgs e)
         {
+            // If user wants to change theme
             if (e.KeyCode == Keys.D)
             {
                 mainPanel.BackgroundImage = Properties.Resources.dark_dragon;
@@ -129,7 +140,5 @@ namespace Calculator
 
             }
         }
-
-       
     }
 }
