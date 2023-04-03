@@ -346,7 +346,6 @@
             // 
             this.result.BackColor = System.Drawing.SystemColors.ControlLight;
             this.result.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.result.Cursor = System.Windows.Forms.Cursors.AppStarting;
             this.result.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.result.ForeColor = System.Drawing.Color.Black;
             this.result.Location = new System.Drawing.Point(12, 13);
