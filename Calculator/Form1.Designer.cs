@@ -30,6 +30,7 @@
         {
             this.borderPanel = new System.Windows.Forms.Panel();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.result = new System.Windows.Forms.Label();
             this.btnEquals = new System.Windows.Forms.Button();
             this.btn0 = new System.Windows.Forms.Button();
             this.btn3 = new System.Windows.Forms.Button();
@@ -48,7 +49,6 @@
             this.btn4 = new System.Windows.Forms.Button();
             this.btn7 = new System.Windows.Forms.Button();
             this.btnPercent = new System.Windows.Forms.Button();
-            this.result = new System.Windows.Forms.TextBox();
             this.borderPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
@@ -66,6 +66,7 @@
             // 
             this.mainPanel.BackgroundImage = global::Calculator.Properties.Resources.light_dragon;
             this.mainPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.mainPanel.Controls.Add(this.result);
             this.mainPanel.Controls.Add(this.btnEquals);
             this.mainPanel.Controls.Add(this.btn0);
             this.mainPanel.Controls.Add(this.btn3);
@@ -84,11 +85,22 @@
             this.mainPanel.Controls.Add(this.btn4);
             this.mainPanel.Controls.Add(this.btn7);
             this.mainPanel.Controls.Add(this.btnPercent);
-            this.mainPanel.Controls.Add(this.result);
             this.mainPanel.Location = new System.Drawing.Point(13, 18);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(312, 357);
             this.mainPanel.TabIndex = 0;
+            // 
+            // result
+            // 
+            this.result.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.result.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.result.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.result.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.result.Location = new System.Drawing.Point(12, 16);
+            this.result.Name = "result";
+            this.result.Size = new System.Drawing.Size(289, 35);
+            this.result.TabIndex = 19;
+            this.result.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnEquals
             // 
@@ -342,19 +354,6 @@
             this.btnPercent.UseVisualStyleBackColor = false;
             this.btnPercent.Click += new System.EventHandler(this.inputOperator);
             // 
-            // result
-            // 
-            this.result.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.result.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.result.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.result.ForeColor = System.Drawing.Color.Black;
-            this.result.Location = new System.Drawing.Point(12, 13);
-            this.result.Name = "result";
-            this.result.ReadOnly = true;
-            this.result.Size = new System.Drawing.Size(289, 35);
-            this.result.TabIndex = 0;
-            this.result.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // Form1
             // 
             this.BackColor = System.Drawing.Color.Black;
@@ -365,7 +364,6 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown_1);
             this.borderPanel.ResumeLayout(false);
             this.mainPanel.ResumeLayout(false);
-            this.mainPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -374,7 +372,6 @@
         private Panel panel1;
         private Panel borderPanel;
         private Panel mainPanel;
-        private TextBox result;
         private Button btnPercent;
         private Button btn0;
         private Button btn3;
@@ -393,5 +390,6 @@
         private Button btn4;
         private Button btn7;
         private Button btnEquals;
+        private Label result;
     }
 }

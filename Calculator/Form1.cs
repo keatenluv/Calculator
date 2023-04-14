@@ -1,3 +1,5 @@
+using System.Numerics;
+
 namespace Calculator
 {
     public partial class Form1 : Form
@@ -35,7 +37,6 @@ namespace Calculator
             Button button = sender as Button;
             string num = button?.Text;
             
-
             if (!calculated)
             {
                 string[] inputs = result.Text.Split(' ');
@@ -67,30 +68,30 @@ namespace Calculator
                 int rightOperand = int.Parse(inputs[2]);
                 string op = inputs[1];
                 calculated = true;
+                BigInteger number = 0;
                 switch (op)
                 {
                     case "/":
-                        result.Text = (leftOperand / rightOperand).ToString();
+                        number = BigInteger.Divide(leftOperand, rightOperand);
                         break;
                     case "*":
-                        result.Text = (leftOperand * rightOperand).ToString();
+                        number = BigInteger.Multiply(leftOperand, rightOperand);
                         break;
-                    case "-":
-                        result.Text = (leftOperand - rightOperand).ToString();
+                    case "-": 
+                        number = BigInteger.Subtract(leftOperand, rightOperand);
                         break;
                     case "+":
-                        result.Text = (leftOperand + rightOperand).ToString();
+                        number = BigInteger.Add(leftOperand, rightOperand);
                         break;
                     case "%":
-                        result.Text = (leftOperand % rightOperand).ToString();
+                        number = (leftOperand % rightOperand);
                         break;
                 }
+                result.Text = number.ToString("N0");
             } else
             {
                 MessageBox.Show("Incomplete Expression");
             }
-
-
         }
 
         private void btnDel_Click(object sender, EventArgs e)
@@ -130,14 +131,15 @@ namespace Calculator
             // If user wants to change theme
             if (e.KeyCode == Keys.D)
             {
+                result.BackColor = (Color)new ColorConverter().ConvertFromString("ActiveBorder");
                 mainPanel.BackgroundImage = Properties.Resources.dark_dragon;
                 changeButtonColor("white");
             }
             else if (e.KeyCode == Keys.L)
             {
+                result.BackColor = (Color)new ColorConverter().ConvertFromString("ControlLight");
                 mainPanel.BackgroundImage = Properties.Resources.light_dragon;
                 changeButtonColor("black");
-
             }
         }
     }
